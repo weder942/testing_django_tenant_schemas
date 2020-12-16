@@ -50,10 +50,12 @@ TENANT_APPS = (
 
 )
 
-TENANT_MODEL = "Client.Client"  # app.Model
+TENANT_MODEL = "customers.Client"  # app.Model
+TENANT_DOMAIN_MODEL = "customers.Domain"  # app.Model
+
 
 INSTALLED_APPS = [
-    # 'tenant_schemas',  # mandatory, should always be before any django app
+    'tenant_schemas',  # mandatory, should always be before any django app
     'Client.apps.ClientConfig',
 
     'django.contrib.admin',
@@ -65,6 +67,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django_tenants.middleware.main.TenantMainMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

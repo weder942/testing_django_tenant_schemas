@@ -1,1 +1,1 @@
-django-tenant-schemas
+django-tenants
